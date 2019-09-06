@@ -4,7 +4,6 @@
 
 # internal imports
 from .. import tap_session
-from ..utils import tap
 
 # Standard library imports
 
@@ -12,7 +11,7 @@ from ..utils import tap
 
 __all__ = ['query_basic_lc_by_ucac4_id']
 
-def query_basic_lc_by_ucac4_id(ucac4_id, force_download=False):
+def query_basic_lc_by_ucac4_id(ucac4_id):
     query = "SELECT jd_mid,bmag,bmagerr,vmag,vmagerr \
         FROM applause_dr3.lightcurve \
         WHERE bmag IS NOT NULL \
