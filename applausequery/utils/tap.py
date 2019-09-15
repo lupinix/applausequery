@@ -50,7 +50,7 @@ class ApplauseTAP(vo.dal.TAPService):
 
         Returns
         -------
-        token: str
+        token : str
             Authentication token for personal access to APPLAUSE, None means: no token set
         """
         return self.__token
