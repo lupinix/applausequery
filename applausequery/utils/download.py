@@ -8,6 +8,8 @@ from os.path import basename
 from urllib.request import urlretrieve
 
 
+__all__ = ['get_file']
+
 __basepath = "https://www.plate-archive.org/files/"
 
 
