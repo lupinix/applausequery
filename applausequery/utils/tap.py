@@ -13,7 +13,7 @@ class ApplauseTAP(vo.dal.TAPService):
 
     def __init__(self, token=None):
         """
-        Instanciate APPLAUSE TAP session
+        Instantiate APPLAUSE TAP session
 
         Parameters
         ----------
