@@ -11,7 +11,7 @@ from urllib.request import urlretrieve
 __basepath = "https://www.plate-archive.org/files/"
 
 
-def download_file(path, save_filename=None):
+def get_file(path, filename=None):
     """
     Download file from APPLAUSE web server
 
@@ -25,7 +25,7 @@ def download_file(path, save_filename=None):
         Filename/path to be used to save the result. If not passed as an
         arguement, the original filename will be used and saved in current dir
     """
-    if save_filename is None:
+    if filename is None:
         urlretrieve(__basepath+path, filename=basename(path))
     else:
-        urlretrieve(__basepath+path, filename=save_filename)
+        urlretrieve(__basepath+path, filename=filename)
