@@ -61,39 +61,5 @@ class ApplauseTAP(vo.dal.TAPService):
         """
         return self.__token
     
-    def run_async(self, query, language="ADQL", maxrec=None, uploads=None, **keywords):
-        """
-        runs async query and returns its result
-
-        This modified function contains a workaround (sleep(0.5)) to avoid
-        HTTP error 500. It looks like PyVO is faster than the server otherwise ;)
-
-        Parameters
-        ----------
-        query : str, dict
-            the query string / parameters
-        language : str
-            specifies the query language, default ADQL.
-            useful for services which allow to use the backend query language.
-        maxrec : int
-            the maximum records to return. defaults to the service default
-        uploads : dict
-            a mapping from table names to objects containing a votable
-
-        Returns
-        -------
-        TAPResult
-            the query instance
-
-        """
-        job = self.submit_job(query, language, maxrec, uploads, **keywords)
-        job = job.run().wait()
-        time.sleep(0.5)
-        job.raise_if_error()
-        result = job.fetch_result()
-        job.delete()
-
-        return result
-
 
 
