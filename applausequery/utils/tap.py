@@ -29,7 +29,7 @@ class ApplauseTAP(vo.dal.TAPService):
             self.__session = vo.utils.http.create_session()
             super().__init__("https://www.plate-archive.org/tap", session=self.__session)
         if token is not None:
-            self.__session.headers['Authorization'] = 'Token ' + token           
+            self.__session.headers['Authorization'] = 'Token ' + token
     
 
     def set_token(self, token):
