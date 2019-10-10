@@ -25,5 +25,5 @@ more information.
 Contributing
 ------------
 For now the set of prepared queries is focused on my own requirements for my
-phd thesus. If you have ideas or drafts for queries common to work with 
+phd thesis. If you have ideas or drafts for queries common to work with 
 APPLAUSE, feel free file an issue or a pull request.
