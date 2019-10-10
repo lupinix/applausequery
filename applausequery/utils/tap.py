@@ -21,10 +21,15 @@ class ApplauseTAP(vo.dal.TAPService):
         token : str, optional
             Authentication token for personal access to APPLAUSE
         """
-        super().__init__("https://www.plate-archive.org/tap")
         self.__token = token
+        if vo.version.major < 1:
+            self.__session = vo.utils.http.session
+            super().__init__("https://www.plate-archive.org/tap")
+        else:
+            self.__session = vo.utils.http.create_session()
+            super().__init__("https://www.plate-archive.org/tap", session=self.__session)
         if token is not None:
-            vo.utils.http.session.headers['Authorization'] = 'Token ' + token
+            self.__session.headers['Authorization'] = 'Token ' + token           
     
 
     def set_token(self, token):
@@ -38,10 +43,10 @@ class ApplauseTAP(vo.dal.TAPService):
         """
         self.__token = token
         if token is not None:
-            vo.utils.http.session.headers['Authorization'] = 'Token ' + token
+            self.__session.headers['Authorization'] = 'Token ' + token
         elif token is None:
             try:
-                vo.utils.http.session.headers.pop('Authorization')
+                self.__session.headers.pop('Authorization')
             except KeyError:
                 pass
     
