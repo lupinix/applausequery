@@ -22,12 +22,8 @@ class ApplauseTAP(vo.dal.TAPService):
             Authentication token for personal access to APPLAUSE
         """
         self.__token = token
-        if vo.version.major < 1:
-            self.__session = vo.utils.http.session
-            super().__init__("https://www.plate-archive.org/tap")
-        else:
-            self.__session = vo.utils.http.create_session()
-            super().__init__("https://www.plate-archive.org/tap", session=self.__session)
+        self.__session = vo.utils.http.create_session()
+        super().__init__("https://www.plate-archive.org/tap", session=self.__session)
         if token is not None:
             self.__session.headers['Authorization'] = 'Token ' + token
     
